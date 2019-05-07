@@ -5,10 +5,15 @@ import numpy as np
 import os.path
 from PIL import Image
 import random
-import keyboard
+#import keyboard
+import serial
 count = 0
+ser1 = serial.Serial('/dev/cu.usbmodem14201', 9600)
+ser1.readline()
 while True:
-    if keyboard.is_pressed('m'):
+    cc = str(ser1.readline())
+    print(cc[2:][:-5] )
+    if (cc[2:][:-5]) == "-motion_detected":
         count += 1
         r = requests.get('https://thispersondoesnotexist.com/image',
                          stream=True, headers={'User-agent': 'Mozilla/5.0'})
