@@ -4,10 +4,12 @@ import time
 import numpy as np
 import os.path
 from PIL import Image
+Image.LOAD_TRUNCATED_IMAGES = True
 import random
 #import keyboard
 import serial
 count = 0
+#serial communication with arduino
 ser1 = serial.Serial('/dev/cu.usbmodem14201', 9600)
 ser1.readline()
 while True:
@@ -24,7 +26,7 @@ while True:
                 start_time = time.time()
                 #czasomierz
                 print("start time: ", start_time)
-                time.sleep(0.5)
+                time.sleep(2)
 
                 # wszystko w obecnym folderze z rozszerzeniem jpeg
                 for f in os.listdir('.'):
@@ -52,5 +54,6 @@ while True:
                         #czasomierz
                         elapsed_time = time.time() - start_time
                         print("elapsed time: ", elapsed_time)
+                        print(count)
                         break
 #jak przyśpieszyć ten program? hash? fibonacci?
