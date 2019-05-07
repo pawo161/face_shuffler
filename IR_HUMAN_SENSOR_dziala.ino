@@ -1,19 +1,12 @@
-    /////////////////////////////////////////////////////////////////
-   //             Arduino PIR sensor Tutorial           v1.00     //
-  //       Get the latest version of the code here:              //
- //      http://educ8s.tv/arduino-pir-sensor-tutorial           //
-/////////////////////////////////////////////////////////////////
-
-#include <Keyboard.h>
 int ledPin = 6;
 int pirPin = 9;
 unsigned long val = 0;
 
 void setup() 
 {
+  Serial.begin(9600);
   pinMode (ledPin,OUTPUT);
   pinMode (pirPin, INPUT);
-  Keyboard.begin();
 }
 void loop () 
 {
@@ -22,12 +15,10 @@ void loop ()
 
 if (val == 1){
   digitalWrite(ledPin,LOW);
-  Serial.println("motion detected");
-  USBDevice.wakeupHost();
-  Keyboard.write('m');
+  Serial.println("motion_detected");
+  Serial.write(45);
   delay(3000);
 }
 else
-  Serial.println("scanning");
-
+  digitalWrite(ledPin,HIGH);
 }
