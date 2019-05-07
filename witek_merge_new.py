@@ -4,7 +4,8 @@ import time
 import numpy as np
 #import os.path
 from PIL import Image
-Image.LOAD_TRUNCATED_IMAGES = True
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 import random
 #import keyboard
 import serial
@@ -32,7 +33,8 @@ while True:
                 # wszystko w obecnym folderze z rozszerzeniem jpeg
 
                 rgbImg = Image.open("img%s.jpeg" % (count))
-                #rgbImg.load()
+                rgbImg.load()
+                #rgbImg.LOAD_TRUNCATED_IMAGES = True
                 #fn, fext = os.path.splitext(f)
                 # działanie
 
@@ -40,7 +42,7 @@ while True:
                  # doc on shuffle: multi-dimensional arrays are only shuffled along the first axis
                 # so let's make the image an array of (N,3) instead of (m,n,3)
                 rndImg2 = np.reshape(pix, (-1, pix.shape[2]))
-                b = random.randint(1, 6)
+                b = random.randint(1, 5)
                 for k in range(b):
                     # now shuffle
                     np.random.shuffle(rndImg2)
@@ -51,7 +53,7 @@ while True:
 
                     j.save('shuffled/img%sS.jpeg' % (count))
                     rndImg2 = rdmImg
-                    print("zrobilem shuffle")
+
                 #czasomierz
                 elapsed_time = time.time() - start_time
                 print("elapsed time: ", elapsed_time)
