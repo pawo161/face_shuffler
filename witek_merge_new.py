@@ -1,6 +1,6 @@
 import requests
 import shutil
-import time
+#import time
 import numpy as np
 import os
 from PIL import Image
@@ -16,7 +16,7 @@ ser1.readline()
 while True:
     cc = str(ser1.readline())
     print(cc[2:][:-5] )
-    if (cc[2:][:-5]) == "-motion_detected":
+    if (cc[2:][:-5]) == "motion_detected":
         count += 1
         r = requests.get('https://thispersondoesnotexist.com/image',
                          stream=True, headers={'User-agent': 'Mozilla/5.0'})
@@ -26,14 +26,14 @@ while True:
                 shutil.copyfileobj(r.raw, f)
 
                 #czasomierz
-                start_time = time.time()
-                print("start time: ", start_time)
+                #start_time = time.time()
+                #print("start time: ", start_time)
                 #time.sleep(1)
 
                 # wszystko w obecnym folderze z rozszerzeniem jpeg
 
                 rgbImg = Image.open("img%s.jpeg" % (count))
-                rgbImg.load()
+                #rgbImg.load()
                 #rgbImg.LOAD_TRUNCATED_IMAGES = True
                 #fn, fext = os.path.splitext(f)
                 # działanie
@@ -55,8 +55,8 @@ while True:
                     rndImg2 = rdmImg
 
                 #czasomierz
-                elapsed_time = time.time() - start_time
-                print("elapsed time: ", elapsed_time)
+                #elapsed_time = time.time() - start_time
+                #print("elapsed time: ", elapsed_time)
                 print(count)
                 if count > 2:
                     os.remove("shuffled/img%sS.jpeg" % (count-2))
