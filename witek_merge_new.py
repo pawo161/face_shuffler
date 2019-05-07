@@ -2,7 +2,7 @@ import requests
 import shutil
 import time
 import numpy as np
-#import os.path
+import os
 from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -28,7 +28,7 @@ while True:
                 #czasomierz
                 start_time = time.time()
                 print("start time: ", start_time)
-                time.sleep(1)
+                #time.sleep(1)
 
                 # wszystko w obecnym folderze z rozszerzeniem jpeg
 
@@ -58,5 +58,8 @@ while True:
                 elapsed_time = time.time() - start_time
                 print("elapsed time: ", elapsed_time)
                 print(count)
+                if count > 2:
+                    os.remove("shuffled/img%sS.jpeg" % (count-2))
+                    os.remove("img%s.jpeg" % (count-2))
 
 #jak przyśpieszyć ten program? hash? fibonacci?
