@@ -6,8 +6,6 @@ import os
 from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-#import random
-#import keyboard
 import serial
 count = 0
 #serial communication with arduino
@@ -60,8 +58,6 @@ while True:
                 #rndImg2 = rdmImg
                 print("saved gif")
 
-
-
                 #czasomierz
                 #elapsed_time = time.time() - start_time
                 #print("elapsed time: ", elapsed_time)
@@ -69,5 +65,3 @@ while True:
                 if count > 2:
                     os.remove("shuffled/img%sS.gif" % (count-2))
                     os.remove("img%s.jpeg" % (count-2))
-
-#jak przyśpieszyć ten program? hash? fibonacci?
