@@ -1,6 +1,6 @@
 int ledPin = 6;
 int pirPin = 9;
-unsigned long val = 0;
+int val = 0;
 
 void setup() 
 {
@@ -14,9 +14,8 @@ void loop ()
   digitalWrite(ledPin,val);
 
 if (val == 1){
-  digitalWrite(ledPin,LOW);
   Serial.println("motion_detected");
-  Serial.write(45);
+  digitalWrite(ledPin,LOW);
   delay(3000);
 }
 else
